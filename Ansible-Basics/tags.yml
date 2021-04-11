@@ -1,0 +1,15 @@
+---
+# tags in ansible
+- name: "A tags is attribute that can be used for execute particular task"
+  hosts: localhost
+  tasks:
+      - name: "Yes this is Tags example"
+        debug:
+            msg: "Welcome to the ansible"
+        tags: gret
+      - name: "Another tags for good bye!!"
+        debug:
+            msg: "Good Bye!!!, Ansible user have great journey"
+        tags: bye
+        when: tags is defined
+        tags: bye

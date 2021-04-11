@@ -1,0 +1,16 @@
+---
+#  VARIABLE
+- name: "VARIABLE is very useful for storing the value and use it in ansible"
+  hosts: localhost
+  #  declare variable
+  vars:
+      os:
+          - name: windows
+          - name: Linux
+          - name: MacOS
+
+  tasks:
+      - name: Use variable
+        debug:
+            msg: "{{ item.name }}"
+        loop: "{{ os }}"

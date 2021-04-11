@@ -1,0 +1,17 @@
+---
+# user When (condition) in ansiible
+- name: Use of  condition in ansible
+  hosts: localhost
+  vars:
+      os:
+          - name: windows
+          - name: Linux
+          - name: MacOS
+  tasks:
+      - debug:
+            msg: "executing ansible"
+            msg: "os is {{ item.name }}"
+        when:
+            - item.name == "windows"
+
+        loop: "{{ os }}"
