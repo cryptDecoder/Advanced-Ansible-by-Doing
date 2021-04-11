@@ -1,0 +1,8 @@
+---
+- name: Show hello World using ansible debug
+  hosts: localhost
+  #  mention tasks here
+  tasks:
+    - name: "TASK 1: Hello!, World!!!"
+      debug:
+        msg: "Hey, I am here new to learn ansible, hope rock together !!!! :)"

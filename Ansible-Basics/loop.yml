@@ -1,0 +1,40 @@
+---
+# in this playbook we will understand the use of loop in ansible
+- name: Loop in ansible
+  hosts: localhost
+  #  define task here
+  tasks:
+    - debug:
+        msg: Loop is very useful while iterating multiple elements in ansible
+    - debug:
+        msg: "{{ item }}"
+      # with items
+      with_items:
+        - Line 1
+        - Line 2
+        - Line 3
+
+    #  with loops
+    - debug:
+        msg: "{{ item }}"
+      loop:
+        - John
+        - Jake
+        - Tom
+    #  loop with dictionary
+    - debug:
+        msg: "{{ item.name , item.id}}"
+      loop:
+        - name: Don
+          id: 1
+        - name: "Sam"
+          id: 2
+    # Ansible Loops with indexes
+    - debug:
+        msg: "The car at {{ item.0 }} is {{ item.1 }}"
+      with_indexed_items:
+        - "Nissan"
+        - "Mercedes"
+        - "Toyota"
+        - "Mazda"
+        - "BMW"
