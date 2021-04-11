@@ -1,0 +1,12 @@
+---
+# This ansible role is used for install git on cent os
+- name: Install git on CentOS 7
+  yum:
+    name: git
+    state: present
+    update_cache: yes
+- name: Showing Git version
+  shell: git --version
+  register: out
+- debug:
+    msg: "{{ out.stdout }}"

@@ -1,0 +1,23 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do | config |
+  config.ssh.insert.key = true
+  config.vm.provider :virtualbox do | vb |
+    vb.memory = 256
+    vb.cpus = 2
+    vb.linked_clone = true
+    vb.gui = false  
+  end
+  # application server configuration
+  config.vm.defile "centApp" do | app |
+    app.vm.hostname = "app.dev"
+    app.vm.box = "centos/7"
+    app.vm.network :private_network, ip: "192.168.10.14"
+  end
+  # provision server using ansible
+  config.vm.provision "ansible" do | ansible |
+    ansible.playbook = "playbook.yml"
+  end
+end

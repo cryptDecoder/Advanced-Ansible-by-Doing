@@ -1,0 +1,21 @@
+---
+- name: Provision the vagrant box using ansible
+  hosts: all
+  become: yes
+  #  calling  roles here
+  roles:
+    - git
+  tasks:
+    - name: Ensure NTP is installed
+      yum: name=ntp state=present
+    - name: Ensure NTP is running
+      service: name=ntpd state=started enabled=yes
+  tasks:
+    - shell: |
+        n=1
+        if n==1;then
+          echo "Hello Ansible"
+        fi
+      register: ps 
+    - debug: 
+        msg: "{{ ps.stdout }}"
