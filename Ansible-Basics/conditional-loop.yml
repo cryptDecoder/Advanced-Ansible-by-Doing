@@ -1,0 +1,27 @@
+---
+#  In this playbook we will learn how to use conditional loop in ansible
+- name: conditional loop
+  hosts: localhost
+  #  we are also going to see variable here as well
+  vars:
+    students:
+      - name: Nany
+        marks: 45
+      - name: Vam
+        marks: 67
+      - name: Sam
+        marks: 39
+
+  tasks:
+    - debug:
+        msg: Handling condition is also important to execute specific task in ansible
+    - debug:
+        msg: Showing all students
+        msg: "{{ item.name }} || {{ item.marks }}"
+      
+      when:
+        - item.marks >= 40
+
+      loop: "{{ students }}"
+        
+        
