@@ -1,0 +1,15 @@
+---
+# this is the example of debuging ansible while executing
+- name: Ansible Debuging using register and debug
+  hosts: localhost
+  tasks:
+      - name: Print the system uptime using register
+        shell: /usr/bin/uptime
+        register: result
+      - debug:
+            msg: "{{ result.stdout }}"
+      - name: Print all directories
+        shell: ls -lrth
+        register: result
+      - debug:
+            msg: "{{ result.stdout }}"

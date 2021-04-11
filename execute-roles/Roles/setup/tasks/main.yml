@@ -1,0 +1,5 @@
+---
+# tasks file for setup
+- name: Print all available facts of server
+  ansible.builtin.debug:
+      var: ansible_facts

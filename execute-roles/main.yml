@@ -1,0 +1,6 @@
+---
+#  calling ansible roles here
+- name: Calling all ansible roles here!!!
+  hosts: all
+  roles:
+      - setup
