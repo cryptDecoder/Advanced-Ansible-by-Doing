@@ -1,5 +1,8 @@
 ---
 # tasks file for setup
-- name: Print all available facts of server
-  ansible.builtin.debug:
-      var: ansible_facts
+- name: OS Distribution
+  debug:
+      msg: "{{ ansible_distribution }}"
+- name: Distribution Version
+  debug:
+      msg: "{{ ansible_distribution_version }}"
